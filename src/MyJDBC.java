@@ -51,6 +51,8 @@ public class MyJDBC {
 //            statement.execute("insert into students (last_name, first_name) values ('Solaro', 'Roberta');");
 //            statement.execute("insert into students (last_name, first_name) values ('Cielo', 'Ronaldo');");
 
+            // ---------------------------------------------------------------------------------------------------------
+
             /**
              * Ho creato un oggetto rs di tipo ResultSet in cui ho selezionato la tabella
              */
@@ -59,21 +61,37 @@ public class MyJDBC {
             /**
              * Ho creato un ulteriore metodo try catch
              */
-            try {
-                while (rs.next()) {
+//            try {
+//                while (rs.next()) {
+//
+//                    /**
+//                     * Ho assegnato a names e all'array surnames le rispettive colonne, ed ho stampato in console
+//                     * prima i nome, e poi l'array di stringhe.
+//                     */
+//                    String names = rs.getString(2);
+//                    String[] surnames = {rs.getString(3)};
+//                    System.out.println(names);
+//                    System.out.println(Arrays.toString(surnames));
+//                }
+//            } catch (Exception e){
+//                System.out.println(e);
+//            }
 
-                    /**
-                     * Ho assegnato a names e all'array surnames le rispettive colonne, ed ho stampato in console
-                     * prima i nome, e poi l'array di stringhe.
-                     */
-                    String names = rs.getString(2);
-                    String[] surnames = {rs.getString(3)};
-                    System.out.println(names);
-                    System.out.println(Arrays.toString(surnames));
-                }
-            } catch (Exception e){
-                System.out.println(e);
-            }
+            //----------------------------------------------------------------------------------------------------------
+
+            /**
+             * Ho creato la nuova colonna chiamata country attraverso ALTER TABLE e ADD
+             */
+//            statement.execute("alter table newdb.students add country varchar(30);");
+
+            /**
+             * Ho poi fatto il SET del country con la parola UPDATE, Italy per i primi due studenti, e Germany per gli
+             * ultimi 2
+             */
+//            statement.execute("update newdb.students set country = 'Italy' where student_id = 1;");
+            statement.execute("update newdb.students set country = 'Italy' where student_id = 2;");
+            statement.execute("update newdb.students set country = 'Germany' where student_id = 3;");
+            statement.execute("update newdb.students set country = 'Germany' where student_id = 4;");
 
 
         }catch (Exception e) {
