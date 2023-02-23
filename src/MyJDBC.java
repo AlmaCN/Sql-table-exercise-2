@@ -1,5 +1,5 @@
 import java.sql.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 
 public class MyJDBC {
@@ -89,9 +89,57 @@ public class MyJDBC {
              * ultimi 2
              */
 //            statement.execute("update newdb.students set country = 'Italy' where student_id = 1;");
-            statement.execute("update newdb.students set country = 'Italy' where student_id = 2;");
-            statement.execute("update newdb.students set country = 'Germany' where student_id = 3;");
-            statement.execute("update newdb.students set country = 'Germany' where student_id = 4;");
+//            statement.execute("update newdb.students set country = 'Italy' where student_id = 2;");
+//            statement.execute("update newdb.students set country = 'Germany' where student_id = 3;");
+//            statement.execute("update newdb.students set country = 'Germany' where student_id = 4;");
+
+
+            //---------------------------------------Esercizio VIEW-----------------------------------------------
+
+            /**
+             * Ho creato le due view, italian_students e german_students e le ho eseguite (su workbench sono presenti
+             * e funzionanit)
+             */
+//            statement.execute("CREATE VIEW italian_students AS " +
+//                    "SELECT last_name, first_name " +
+//                    "FROM students " +
+//                    "WHERE country = 'Italy';");
+//
+//            statement.execute("CREATE VIEW german_students AS " +
+//                    "SELECT last_name, first_name " +
+//                    "FROM students " +
+//                    "WHERE country = 'Germany';");
+
+            System.out.println("---Italian Students---");
+
+            /**
+             * Ho creato un oggetto student di tipo Student
+             */
+            Student student = new Student();
+
+            /**
+             * Ho creato un ArrayList italianStudents a cui ho attribuito il metodo italianStudents creato nella classe
+             * Student.
+             * Ho creato un ciclo for in cui sono andata a stampare in console i nome dei italianStudent.
+             */
+            ArrayList<Student> italianStudents = student.italianStudents();
+            for(int i = 0; i < italianStudents.size(); i++){
+                System.out.println("First name = " + italianStudents.get(i).getName());
+                System.out.println("Last name = " + italianStudents.get(i).getSurname());
+            }
+
+            System.out.println("---German Students---");
+
+            /**
+             * Ho creato un ArrayList germanStudents a cui ho attribuito il metodo germanStudents creato nella classe
+             * Student.
+             * Ho creato un ciclo for in cui sono andata a stampare in console i nome dei germanStudent.
+             */
+            ArrayList<Student> germanStudents = student.germanStudents();
+            for(int i = 0; i < germanStudents.size(); i++){
+                System.out.println("First name = " + germanStudents.get(i).getName());
+                System.out.println("Last name = " + germanStudents.get(i).getSurname());
+            }
 
 
         }catch (Exception e) {
