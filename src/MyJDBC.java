@@ -113,34 +113,42 @@ public class MyJDBC {
             System.out.println("---Italian Students---");
 
             /**
-             * Ho creato un oggetto student di tipo Student
+             * Ho creato un ArrayList di italianStudent, succesivamente attraverso l'oggetto rs di tipo ResultSet ho
+             * eseguito la query per elezionare la view italian_students.
+             * Attraverso un ciclo while ho dato aggiunto i due studenti all'ArrayList.
+             * Attraverso un ciclo for sono andata a richiamare i dati dell'ArrayList
              */
-            Student student = new Student();
+            ArrayList<Student> italianStudent = new ArrayList<>();
+            rs = statement.executeQuery("select * from italian_students;");
+            while(rs.next()){
+                String name = rs.getString("first_name");
+                String surname = rs.getString("last_name");
+                italianStudent.add(new Student(name, surname));
+            }
 
-            /**
-             * Ho creato un ArrayList italianStudents a cui ho attribuito il metodo italianStudents creato nella classe
-             * Student.
-             * Ho creato un ciclo for in cui sono andata a stampare in console i nome dei italianStudent.
-             */
-            ArrayList<Student> italianStudents = student.italianStudents();
-            for(int i = 0; i < italianStudents.size(); i++){
-                System.out.println("First name = " + italianStudents.get(i).getName());
-                System.out.println("Last name = " + italianStudents.get(i).getSurname());
+            for(Student student : italianStudent){
+                System.out.println(student.getName() + " " + student.getSurname());
             }
 
             System.out.println("---German Students---");
 
             /**
-             * Ho creato un ArrayList germanStudents a cui ho attribuito il metodo germanStudents creato nella classe
-             * Student.
-             * Ho creato un ciclo for in cui sono andata a stampare in console i nome dei germanStudent.
+             * Ho creato un ArrayList di germanStudent, succesivamente attraverso l'oggetto rs di tipo ResultSet ho
+             * eseguito la query per elezionare la view german_students.
+             * Attraverso un ciclo while ho dato aggiunto i due studenti all'ArrayList.
+             * Attraverso un ciclo for sono andata a richiamare i dati dell'ArrayList
              */
-            ArrayList<Student> germanStudents = student.germanStudents();
-            for(int i = 0; i < germanStudents.size(); i++){
-                System.out.println("First name = " + germanStudents.get(i).getName());
-                System.out.println("Last name = " + germanStudents.get(i).getSurname());
+            ArrayList<Student> germanStudent = new ArrayList<>();
+            rs = statement.executeQuery("select * from german_students;");
+            while(rs.next()){
+                String name = rs.getString("first_name");
+                String surname = rs.getString("last_name");
+                germanStudent.add(new Student(name, surname));
             }
 
+            for(Student student : germanStudent){
+                System.out.println(student.getName() + " " + student.getSurname());
+            }
 
         }catch (Exception e) {
             System.out.println(e);
